@@ -5,8 +5,6 @@ const yesBtn = document.getElementById('yesBtn');
         const floatingHearts = document.getElementById('floatingHearts');
 
         let noBtnSize = 16;
-
-        // The trick: "No" button runs away and shrinks!
         noBtn.addEventListener('mouseover', () => {
             const x = Math.random() * (window.innerWidth - 200);
             const y = Math.random() * (window.innerHeight - 100);
@@ -15,23 +13,19 @@ const yesBtn = document.getElementById('yesBtn');
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
             
-            // Make "No" button smaller
-            noBtnSize = Math.max(noBtnSize - 2, 8);
+            noBtnSize = Math.max(noBtnSize - 4, 8);
             noBtn.style.fontSize = noBtnSize + 'px';
             
-            // Make "Yes" button bigger
             const currentSize = parseInt(yesBtn.style.fontSize || '16');
             yesBtn.style.fontSize = (currentSize + 2) + 'px';
         });
 
-        // When they click "Yes"
         yesBtn.addEventListener('click', () => {
             question.classList.add('hidden');
             success.classList.remove('hidden');
             createFloatingHearts();
         });
 
-        // Create floating hearts animation
         function createFloatingHearts() {
             for (let i = 0; i < 20; i++) {
                 setTimeout(() => {
